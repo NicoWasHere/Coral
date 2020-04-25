@@ -27,6 +27,7 @@ export default (searchTerm) => {
             //sorts the data so the most similar is first
             data = quickSortBySimilarity(data,0,data.length-1)
             //limits results to 25 and updates the result
+            data = data.filter(doc => doc.Similarity>0)
             setResults(data.splice(0,25))
         })
     }, [searchTerm])
