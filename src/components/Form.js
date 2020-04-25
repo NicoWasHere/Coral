@@ -26,7 +26,7 @@ export default ({ constrainWidth=false, onSubmit, children }) => {
         }
 
         input::placeholder, textarea::placeholder {
-          color: var(--text-secondary);
+          color: var(--text-tertiary);
         }
 
         input:focus, textarea:focus {

@@ -20,6 +20,7 @@ export default ({ title }) => {
 
             --text-primary: hsl(208deg 39% 10%);
             --text-secondary: hsl(208deg 10% 40%);
+            --text-tertiary: hsl(208deg, 10%, 60%);
 
             --border: hsl(208deg, 20%, 85%);
             --border-focus: hsl(208deg, 50%, 70%);
