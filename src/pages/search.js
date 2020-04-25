@@ -48,6 +48,16 @@ export default ({ location }) => {
           grid-row-gap: 16px;
         `}
       >
+        {results.length === 0 && (
+          <p
+            css={css`
+              font-weight: 500;
+            `}
+          >
+            No results found.
+          </p>
+        )}
+
         {results.map(result => (
           <Link
             to={`/question/${result.id}`}
