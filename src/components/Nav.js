@@ -41,11 +41,11 @@ export default ({ noSearch=false }) => {
         Coral
       </Link>
 
-      {!noSearch && 
+      {!noSearch ?
         <SearchBar
           onSubmit={query => navigate(`/search?q=${encodeURIComponent(query)}`)}
         />
-      }
+      : <div />}
 
       {user && (
         <>
