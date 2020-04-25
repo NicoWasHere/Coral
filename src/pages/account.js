@@ -57,7 +57,7 @@ export default () => {
 
       <Nav />
 
-      <h1 class="page-heading">Account Settings</h1>
+      <h1 className="page-heading">Account Settings</h1>
 
       {(user && !user.displayName) && (
         <p>
