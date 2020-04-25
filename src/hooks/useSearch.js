@@ -29,7 +29,7 @@ export default (searchTerm) => {
             //limits results to 25 and updates the result
             setResults(data.splice(0,25))
         })
-    }, [])
+    }, [searchTerm])
 
     //breaks the search term into small 3 char strings
     const fragmentSearch = (search) =>{

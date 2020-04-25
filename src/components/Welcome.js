@@ -10,7 +10,7 @@ export default () => {
         padding: 24px;
         border: 1px solid var(--border);
         border-radius: 8px;
-        margin: 32px 0;
+        margin-bottom: 32px;
 
         strong, p {
           margin-bottom: 16px;

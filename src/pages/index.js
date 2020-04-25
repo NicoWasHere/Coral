@@ -7,7 +7,6 @@ import Welcome from "../components/Welcome"
 import Nav from "../components/Nav"
 
 import useUser from "../hooks/useUser"
-import useSearch from "../hooks/useSearch"
 
 //homepage
 export default () => {
