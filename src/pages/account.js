@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
+import { css } from "@emotion/core"
 import firebase from "gatsby-plugin-firebase"
 
 import Head from "../components/Head"
@@ -65,8 +66,14 @@ export default () => {
       <h1 className="page-heading">Account Settings</h1>
 
       {(user && !user.displayName) && (
-        <p>
-          What's your name?
+        <p
+          css={css`
+            margin-bottom: 16px;
+            font-weight: 600;
+            font-size: 20px;
+          `}
+        >
+          Please complete your account information:
         </p>
       )}
 
