@@ -1,9 +1,11 @@
 import React, { useState } from "react"
+import { css } from "@emotion/core"
 import { navigate } from "gatsby"
 import firebase from "gatsby-plugin-firebase"
 
 import Head from "../components/Head"
 import Form from "../components/Form"
+import Nav from "../components/Nav"
 
 import useUser from "../hooks/useUser"
 
@@ -46,11 +48,19 @@ export default () => {
     <>
       <Head title="New Question" />
 
-      <h1>Submit a question</h1>
+      <Nav />
 
-      <h2>Anyone will be able to get you an answer to your question.</h2>
+      <h1 className="page-heading">Submit a question</h1>
+
+      <p
+        css={css`
+          margin-bottom: 16px;
+        `}
+      >
+        Other members of the Coral community will try to answer your question.
+      </p>
       
-      <Form onSubmit={onSubmit}>
+      <Form onSubmit={onSubmit} constrainWidth>
         <input
           placeholder="Title"
           value={title}
