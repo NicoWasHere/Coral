@@ -22,6 +22,7 @@ export default ({ constrainWidth=false, onSubmit, children }) => {
 
         textarea {
           min-height: 200px;
+          resize: vertical;
         }
 
         input::placeholder, textarea::placeholder {
