@@ -1,0 +1,15 @@
+CORAL
+
+An online form where people can post school related questions and people will answer them. 
+- Anyone with an account can make a post 
+- Anyone with an account can answer
+- Only moderator accounts can approve
+- Sub page for different subjects
+- Video and image responses are a really good thing
+- People can still submit answers when there already is an approved answer to give a better approved answer
+
+Once that is finished we
+- Add a point system. 
+    - the way people get points is when there answer is marked helpful
+    - Only the single approved answer can be marked helpful leading to competition for better answers 
+- Connect students with tutors (schedule (possibily also earn points))
