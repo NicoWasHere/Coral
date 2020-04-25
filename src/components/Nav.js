@@ -3,17 +3,27 @@ import { navigate } from "gatsby"
 import { Link } from "gatsby"
 import { css } from "@emotion/core"
 
-import SearchBar from "../components/SearchBar"
+import SearchBar from "./SearchBar"
+
+import useUser from "../hooks/useUser"
 
 export default ({ noSearch=false }) => {
+  const user = useUser()
+
   return (
     <nav
       css={css`
         display: grid;
-        grid-template-columns: max-content minmax(0, 600px);
+        grid-template-columns: max-content minmax(0, 600px)${user ? "1fr repeat(2, max-content)" : ""};
         grid-column-gap: 32px;
         align-items: center;
         margin-bottom: 32px;
+
+        a:not(.logo) {
+          color: var(--accent);
+          font-weight: 500;
+          display: block;
+        }
       `}
     >
       {/* logo in top left corner */}
@@ -26,6 +36,7 @@ export default ({ noSearch=false }) => {
           display: block;
           text-decoration-color: var(--accent);
         `}
+        className="logo"
       >
         Coral
       </Link>
@@ -35,6 +46,14 @@ export default ({ noSearch=false }) => {
           onSubmit={query => navigate(`/search?q=${encodeURIComponent(query)}`)}
         />
       }
+
+      {user && (
+        <>
+          <div /> {/* for spacing between search bar and links */}
+          <Link to="/new-question">New Question</Link>
+          <Link to="/account">My Account</Link>
+        </>
+      )}
     </nav>
   )
 }

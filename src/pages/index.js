@@ -2,7 +2,6 @@ import React from "react"
 import { css } from "@emotion/core"
 
 import Head from "../components/Head"
-import Logout from "../components/Logout"
 import QuestionList from "../components/QuestionList"
 import Welcome from "../components/Welcome"
 import Nav from "../components/Nav"
@@ -36,8 +35,6 @@ export default () => {
           >
             Welcome back, {user.displayName}.
           </p>
-
-          <Logout />
         </div>
       ) : (
         <Welcome />

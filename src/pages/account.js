@@ -3,6 +3,7 @@ import firebase from "gatsby-plugin-firebase"
 
 import Head from "../components/Head"
 import Form from "../components/Form"
+import Logout from "../components/Logout"
 
 import useUser from "../hooks/useUser"
 
@@ -84,6 +85,8 @@ export default () => {
 
         <input type="submit" value="Save" />
       </Form>
+      
+      <Logout />
     </>
   )
 }
