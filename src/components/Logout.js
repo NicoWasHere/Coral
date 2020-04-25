@@ -1,11 +1,14 @@
 import React from "react"
 import firebase from "gatsby-plugin-firebase"
 import { css } from "@emotion/core"
+import { navigate } from "gatsby"
 
 //a sign out button to log users out of their firebase account
 export default () =>{
     const signOut = () =>{
         firebase.auth().signOut()
+        navigate('/')
+
     }
     return(
         <button
