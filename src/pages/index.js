@@ -1,4 +1,5 @@
 import React from "react"
+import { css } from "@emotion/core"
 
 import Head from "../components/Head"
 import Logout from "../components/Logout"
@@ -19,10 +20,25 @@ export default () => {
       <Nav />
 
       {user ? (
-        <>
-          <div>Hello, {user.displayName}</div>
+        <div
+          css={css`
+            display: grid;
+            grid-template-columns: 1fr max-content;
+            margin-bottom: 32px;
+            align-items: center;
+          `}
+        >
+          <p
+            css={css`
+              font-size: 18px;
+              font-weight: 600;
+            `}
+          >
+            Welcome back, {user.displayName}.
+          </p>
+
           <Logout />
-        </>
+        </div>
       ) : (
         <Welcome />
       )}
