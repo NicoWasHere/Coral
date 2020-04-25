@@ -11,15 +11,13 @@ export default () =>{
         <button
             onClick={signOut}
             css={css`
-                background-color: var(--accent);
-                padding: 6px 12px;
                 border-radius: 4px;
-                color: white;
-                font-weight: 600;
-                font-size: 14px;
+                font-weight: 500;
+                background: transparent;
+                text-decoration: underline;
             `}
         >
-            Log out
+            Log out.
         </button>
     )
 }
