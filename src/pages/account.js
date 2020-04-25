@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { Link } from "gatsby"
 import firebase from "gatsby-plugin-firebase"
 
 import Head from "../components/Head"
@@ -50,7 +51,11 @@ export default () => {
         displayName
     })
   }
-
+  if(!user){
+    return(
+      <Link to={'/signin'}>please sign in here</Link>
+    )
+  }
   return (
     <>
       <Head title="Account" />
