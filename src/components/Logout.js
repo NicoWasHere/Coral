@@ -14,13 +14,12 @@ export default () =>{
         <button
             onClick={signOut}
             css={css`
-                border-radius: 4px;
                 font-weight: 500;
                 background: transparent;
                 text-decoration: underline;
             `}
         >
-            Log out.
+            Log me out.
         </button>
     )
 }

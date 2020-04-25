@@ -74,6 +74,13 @@ export default ({ title }) => {
             background-color: var(--border);
             color: var(--text-primary);
           }
+
+          .page-heading {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+          }
         `}
       />
     </>

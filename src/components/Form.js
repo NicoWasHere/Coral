@@ -2,12 +2,16 @@ import React from "react"
 import { css } from "@emotion/core"
 
 //a basic component that allows all forms to be styled the same way
-export default props => {
+export default ({ constrainWidth=false, onSubmit, children }) => {
   return (
     <form
-      {...props}
+      onSubmit={onSubmit}
       css={css`
-        input {
+        ${constrainWidth === true ? `
+          max-width: 640px;
+        ` : ""}
+      
+        input, textarea {
           width: 100%;
           padding: 8px;
           border: 1px solid var(--border);
@@ -16,11 +20,15 @@ export default props => {
           color: var(--text-primary);
         }
 
-        input::placeholder {
+        textarea {
+          min-height: 200px;
+        }
+
+        input::placeholder, textarea::placeholder {
           color: var(--text-secondary);
         }
 
-        input:focus {
+        input:focus, textarea:focus {
           outline: none;
           border-color: var(--border-focus);
           box-shadow: 0 0 0 3px var(--input-shadow);
@@ -46,7 +54,7 @@ export default props => {
         }
       `}
     >
-      {props.children}
+      {children}
     </form>
   )
 }

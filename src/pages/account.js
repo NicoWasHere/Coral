@@ -4,6 +4,7 @@ import firebase from "gatsby-plugin-firebase"
 import Head from "../components/Head"
 import Form from "../components/Form"
 import Logout from "../components/Logout"
+import Nav from "../components/Nav"
 
 import useUser from "../hooks/useUser"
 
@@ -54,7 +55,9 @@ export default () => {
     <>
       <Head title="Account" />
 
-      <h1>Account</h1>
+      <Nav />
+
+      <h1 class="page-heading">Account Settings</h1>
 
       {(user && !user.displayName) && (
         <p>
@@ -62,7 +65,7 @@ export default () => {
         </p>
       )}
 
-      <Form onSubmit = {onSubmit}>
+      <Form onSubmit={onSubmit} constrainWidth>
         <input
           placeholder="Display name"
           value={displayName}
