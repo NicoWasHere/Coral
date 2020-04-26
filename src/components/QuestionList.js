@@ -59,7 +59,7 @@ export default () =>{
                                 font-weight: 700;
                                 letter-spacing: -.5px;
                                 color: var(--text-primary);
-                                line-height: 1.3;
+                                line-height: 1.4;
                             `}
                         >
                             {question.title}
