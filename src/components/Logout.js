@@ -17,6 +17,7 @@ export default () =>{
                 font-weight: 500;
                 background: transparent;
                 text-decoration: underline;
+                cursor: pointer;
             `}
         >
             Log me out.
