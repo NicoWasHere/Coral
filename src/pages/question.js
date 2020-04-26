@@ -102,7 +102,7 @@ export default ({ location }) => {
         author: user.uid,
         body: answer
       }
-      if(image!="None"){
+      if(image!=="None"){
         data.image = image
       }
       db.collection("questions").doc(id).collection("answers").add(data)
@@ -130,7 +130,17 @@ export default ({ location }) => {
 
       <Nav tinted />
       
-      <main className="constrain-width">
+      <main
+        className="constrain-width"
+        css={css`
+          img {
+            display: block;
+            margin-top: 24px;
+            max-width: 100%;
+            max-height: calc(100vh - 300px);
+          }
+        `}
+      >
         <div
           css={css`
             margin-bottom: 48px;
@@ -157,8 +167,7 @@ export default ({ location }) => {
           >
               Asked by {author}
           </p>
-          {question.image?<img src = {question.image}/>:""}
-          <div
+          <p
             css={css`
               white-space: pre-wrap;
               line-height: 1.5;
@@ -166,7 +175,9 @@ export default ({ location }) => {
             `}
           >
               {question.body}
-          </div>
+          </p>
+
+          {question.image?<img src = {question.image} alt="" />:""}
         </div>
 
         <h2
@@ -191,8 +202,8 @@ export default ({ location }) => {
             `}
           >
             {bestAnswer?.body ? bestAnswer.body : "No answer yet."}
-            {bestAnswer?.image ? <img src = {bestAnswer.image}/>:""}
           </p>
+          {bestAnswer?.image ? <img src = {bestAnswer.image} alt=""/>:""}
         </div>
 
         {/* spacer div */}
@@ -314,8 +325,9 @@ export default ({ location }) => {
                         `}
                       >
                         {answer.body}
-                        {answer.image? <img src = {answer.image}/>:""}
                       </p>
+                      
+                      {answer.image? <img src = {answer.image} alt=""/>:""}
 
                       <button
                         css={css`

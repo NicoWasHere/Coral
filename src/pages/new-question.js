@@ -33,7 +33,7 @@ export default () => {
       author: user.uid,
       timestamp: new Date().getTime()
     }
-    if(image!="None"){
+    if(image!=="None"){
       data.image=image
     }
     db.collection("questions").add(data)
