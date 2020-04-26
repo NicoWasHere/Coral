@@ -53,6 +53,24 @@ export default () =>{
                             height: 100%;
                         `}
                     >
+                        {!question.bestAnswer && (
+                            <span
+                                css={css`
+                                    display: block;
+                                    background-color: var(--accent);
+                                    color: white;
+                                    font-weight: 600;
+                                    margin-bottom: 16px;
+                                    padding: 3px 8px;
+                                    border-radius: 4px;
+                                    max-width: max-content;
+                                    font-size: 14px;
+                                `}
+                            >
+                                Unanswered
+                            </span>
+                        )}
+
                         <p
                             css={css`
                                 font-size: 20px;

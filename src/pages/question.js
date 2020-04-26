@@ -274,8 +274,12 @@ export default ({ location }) => {
         {/* show add answer form only if user is logged in */}
         {user && (
           <>
-            <p>
-              If your answer is picked, it will be shown as this question's answer. Only one answer will be picked. 
+            <p
+              css={css`
+                line-height: 1.4;
+              `}
+            >
+              The best answer will be picked by moderators. {bestAnswer ? "If your answer is better than the current best answer, yours will replace it." : ""}
             </p>
 
             <div
@@ -381,7 +385,7 @@ export default ({ location }) => {
                       </button>
                       <button
                         css={css`
-                          background-color: #d4af37;
+                          background-color: var(--background-gold);
                           color: white;
                           padding: 3px 8px;
                           border-radius: 4px;
@@ -419,6 +423,7 @@ export default ({ location }) => {
                     color: var(--text-primary);
                     margin-bottom: 16px;
                     line-height: 1.4;
+                    margin-top: 32px;
                   `}
                 >
                   Your past answers: 
