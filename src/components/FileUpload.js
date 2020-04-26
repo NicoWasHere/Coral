@@ -1,6 +1,8 @@
 import React,{ useState,useEffect } from "react"
 import firebase from "firebase"
 
+// address is the folder where the media should go ("pfp" or "questions")
+
 export default ({address,doUpload})=>{
     const[file,updateFile] = useState(null)
 
@@ -10,8 +12,6 @@ export default ({address,doUpload})=>{
             uploadFile(file,address)
         }
     },[doUpload])
-
-    useEffect(()=>{},)
 
     return(
         <div>

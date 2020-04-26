@@ -6,6 +6,7 @@ import firebase from 'gatsby-plugin-firebase'
 import Head from "../components/Head"
 import Form from "../components/Form"
 import Nav from "../components/Nav"
+import FileUpload from "../components/FileUpload"
 
 import useUser from "../hooks/useUser"
 
@@ -101,7 +102,14 @@ export default ({ location }) => {
         .then(() => {
           window.location.reload()
         })
+      
+
+      setShouldUpload(true)
     }
+
+
+  const [shouldUpload, setShouldUpload] = useState(false)
+
 
   if(notFound) {
     return (
@@ -248,6 +256,14 @@ export default ({ location }) => {
               placeholder="Write your answer..."
               required
             />
+
+            <div
+              css={css`
+                margin-bottom: 16px;
+              `}
+            />
+
+            <FileUpload address="question" doUpload={shouldUpload} />
 
             <input type="submit" value="Submit answer" />
           </Form>

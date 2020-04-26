@@ -7,7 +7,6 @@ import Form from "../components/Form"
 import Logout from "../components/Logout"
 import Nav from "../components/Nav"
 import NotLoggedIn from "../components/NotLoggedIn"
-import FileUpload from "../components/FileUpload"
 
 import useUser from "../hooks/useUser"
 
