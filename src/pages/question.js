@@ -92,19 +92,24 @@ export default ({ location }) => {
 
     const submitAnswer = e => {
       e.preventDefault()
+      setShouldUpload(true)
 
+    }
+
+    const uploadAnswer = (image) =>{
       const db = firebase.firestore()
-
-      db.collection("questions").doc(id).collection("answers").add({
+      let data = {
         author: user.uid,
         body: answer
-      })
+      }
+      if(image!="None"){
+        data.image = image
+      }
+      db.collection("questions").doc(id).collection("answers").add(data)
         .then(() => {
           window.location.reload()
         })
-      
 
-      setShouldUpload(true)
     }
 
 
@@ -150,7 +155,7 @@ export default ({ location }) => {
         >
             Asked by {author}
         </p>
-
+        {question.image?<img src = {question.image}/>:""}
         <div
           css={css`
             white-space: pre-wrap;
@@ -184,6 +189,7 @@ export default ({ location }) => {
           `}
         >
           {bestAnswer?.body ? bestAnswer.body : "No answer yet."}
+          {bestAnswer?.image ? <img src = {bestAnswer.image}/>:""}
         </p>
       </div>
 
@@ -263,7 +269,7 @@ export default ({ location }) => {
               `}
             />
 
-            <FileUpload address="question" doUpload={shouldUpload} />
+            <FileUpload address="question" doUpload={shouldUpload} uploadComplete={uploadAnswer}  />
 
             <input type="submit" value="Submit answer" />
           </Form>
@@ -306,6 +312,7 @@ export default ({ location }) => {
                       `}
                     >
                       {answer.body}
+                      {answer.image? <img src = {answer.image}/>:""}
                     </p>
 
                     <button

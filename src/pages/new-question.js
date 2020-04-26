@@ -7,6 +7,7 @@ import Head from "../components/Head"
 import Form from "../components/Form"
 import Nav from "../components/Nav"
 import NotLoggedIn from "../components/NotLoggedIn"
+import FileUpload from "../components/FileUpload"
 
 import useUser from "../hooks/useUser"
 
@@ -14,21 +15,28 @@ import useUser from "../hooks/useUser"
 export default () => {
   const [title, setTitle] = useState("")
   const [body, setBody] = useState("")
+  const [doImageUpload,setDoImageUpload] = useState(false)
 
   const user = useUser()
 
   //updates the database whenver a form is submitted
   const onSubmit = e => {
     e.preventDefault()
+    setDoImageUpload(true)
+  }
 
+  const updateDB = (image) =>{
     const db = firebase.firestore()
-  
-    db.collection("questions").add({
+    let data = {
       title,
       body,
       author: user.uid,
       timestamp: new Date().getTime()
-    })
+    }
+    if(image!="None"){
+      data.image=image
+    }
+    db.collection("questions").add(data)
       .then(ref => {
         navigate(`/question/${ref.id}`)
       })
@@ -64,6 +72,12 @@ export default () => {
             value={title}
             onChange={e => setTitle(e.target.value)}
             required
+          />
+
+          <FileUpload
+            address = "answers"
+            doUpload={doImageUpload}
+            uploadComplete={updateDB}
           />
 
           <textarea
