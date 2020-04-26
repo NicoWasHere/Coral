@@ -45,34 +45,36 @@ export default () => {
     <>
       <Head title="New Question" />
 
-      <Nav />
+      <Nav tinted />
 
-      <h1 className="page-heading">Submit a question</h1>
+      <main className="constrain-width">
+        <h1 className="page-heading">Submit a question</h1>
 
-      <p
-        css={css`
-          margin-bottom: 16px;
-        `}
-      >
-        Other members of the Coral community will try to answer your question.
-      </p>
-      
-      <Form onSubmit={onSubmit} constrainWidth>
-        <input
-          placeholder="Title"
-          value={title}
-          onChange={e => setTitle(e.target.value)}
-          required
-        />
+        <p
+          css={css`
+            margin-bottom: 16px;
+          `}
+        >
+          Other members of the Coral community will try to answer your question.
+        </p>
+        
+        <Form onSubmit={onSubmit}>
+          <input
+            placeholder="Title"
+            value={title}
+            onChange={e => setTitle(e.target.value)}
+            required
+          />
 
-        <textarea
-          placeholder="Add some more details..."
-          value={body}
-          onChange={e => setBody(e.target.value)}
-        />
+          <textarea
+            placeholder="Add some more details..."
+            value={body}
+            onChange={e => setBody(e.target.value)}
+          />
 
-        <input type="submit" value="Submit" />
-      </Form>
+          <input type="submit" value="Submit" />
+        </Form>
+      </main>
     </>
   )
 }

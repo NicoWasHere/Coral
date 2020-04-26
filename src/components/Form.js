@@ -50,6 +50,11 @@ export default ({ constrainWidth=false, smallSubmit=false, className, onSubmit, 
           box-shadow: none;
         }
 
+        input[type="submit"].focus-visible {
+          outline: 1px dotted var(--accent);
+          outline-offset: 2px;
+        }
+
         label {
           font-weight: 500;
           margin-bottom: 4px;

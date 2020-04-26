@@ -7,7 +7,7 @@ import SearchBar from "./SearchBar"
 
 import useUser from "../hooks/useUser"
 
-export default ({ noSearch=false }) => {
+export default ({ noSearch=false, constrainWidth=false, tinted=false }) => {
   const user = useUser()
 
   return (
@@ -24,7 +24,15 @@ export default ({ noSearch=false }) => {
           font-weight: 500;
           display: block;
         }
+        
+        /* tinted = darker background color */
+        ${tinted ? `
+          background-color: var(--background-tinted-dark);
+          box-shadow: 0 0 0 var(--body-padding) var(--background-tinted-dark);
+          margin-bottom: 64px;
+        ` : ""}
       `}
+      className={constrainWidth ? "constrain-width" : ""}
     >
       {/* logo in top left corner */}
       <Link

@@ -102,7 +102,47 @@ export default () => {
         <input type="submit" value="Save" />
       </Form>
       
-      <Logout />
+      <main class="constrain-width">
+        <h1 className="page-heading">Account Settings</h1>
+
+        {(user && !user.displayName) && (
+          <p
+            css={css`
+              margin-bottom: 16px;
+              font-weight: 600;
+              font-size: 20px;
+            `}
+          >
+            Please complete your account information:
+          </p>
+        )}
+
+        <Form onSubmit={onSubmit}>
+          <input
+            placeholder="Display name"
+            value={displayName}
+            onChange={e => setDisplayName(e.target.value)}
+            required
+          />
+
+          <textarea
+            placeholder="Bio"
+            value={bio}
+            onChange={e => setBio(e.target.value)}
+          />
+
+          <input
+            placeholder="Year of graduation"
+            type = "number"
+            value={YOG}
+            onChange={e => setYOG(e.target.value)}
+          />
+
+          <input type="submit" value="Save" />
+        </Form>
+        
+        <Logout />
+      </main>
     </>
   )
 }

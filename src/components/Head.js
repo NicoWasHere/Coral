@@ -2,6 +2,8 @@ import React from "react"
 import { css, Global } from "@emotion/core"
 import { Helmet } from "react-helmet-async"
 
+import "focus-visible"
+
 //a <head> component that controls the title and icon
 //allows for a custom title variable as well
 export default ({ title }) => {
@@ -28,6 +30,7 @@ export default ({ title }) => {
 
             --background: hsl(208deg, 39%, 97%);
             --background-tinted: hsl(208deg, 50%, 95%);
+            --background-tinted-dark: hsl(208deg, 40%, 90%);
             
             /* tons of overlapping box shadows so they look buttery smooth */
             --box-shadow:
@@ -83,9 +86,14 @@ export default ({ title }) => {
             margin-bottom: 24px;
           }
           
-          :focus {
+          .focus-visible, input[type="submit"].focus-visible {
             outline: 1px dotted var(--accent);
             outline-offset: 2px;
+          }
+
+          .constrain-width {
+            max-width: 768px;
+            margin: 0 auto;
           }
         `}
       />
