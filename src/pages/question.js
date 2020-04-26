@@ -52,6 +52,8 @@ export default ({ location }) => {
             //gets the best answer from the answers collection
             db.collection("questions").doc(id).collection("answers").doc(bestAnswerId).get()
               .then(res => {
+                if(!res.exists) return // best answer has been deleted
+                
                 setBestAnswer(res.data())
 
                 const authorId = res.data().author
