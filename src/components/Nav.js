@@ -30,19 +30,28 @@ export default ({ noSearch=false }) => {
       <Link
         to="/"
         css={css`
-          color: var(--text-primary);
-          font-weight: 700;
           font-size: 20px;
           display: block;
-          text-decoration-color: var(--accent);
+          text-decoration: none;
 
-          span {
+          * {
             font-size: inherit;
           }
         `}
         className="logo"
       >
-       <span role="img" aria-label="">🐠</span> Coral
+        <span role="img" aria-label="">🐠</span>
+        {" "}
+        <span
+          css={css`
+            text-decoration: underline;
+            text-decoration-color: var(--accent);
+            font-weight: 700;
+            color: var(--text-primary);
+          `}
+        >
+         Coral
+       </span>
       </Link>
 
       {!noSearch ?
