@@ -6,6 +6,7 @@ import firebase from "gatsby-plugin-firebase"
 import Head from "../components/Head"
 import Form from "../components/Form"
 import Nav from "../components/Nav"
+import NotLoggedIn from "../components/NotLoggedIn"
 
 import useUser from "../hooks/useUser"
 
@@ -36,11 +37,7 @@ export default () => {
   //tests to see if the user is logged in. If they are not logged in they can't ask a question
   if(!user?.uid) {
     return (
-      <div>
-        <p>
-          You are not logged in.
-        </p>
-      </div>
+      <NotLoggedIn/>
     )
   }
   

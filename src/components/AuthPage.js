@@ -1,11 +1,12 @@
 import React, { useState } from "react"
 import { css, Global } from "@emotion/core"
+import { Link } from "gatsby"
 
 import Form from "../components/Form"
 
 // Abstracted component for sign in and sign up pages. 
 // prop `onSubmit` runs when the form submits 
-export default ({ heading, onSubmit }) => {
+export default ({ heading, submit, bottom, onSubmit }) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
@@ -26,7 +27,13 @@ export default ({ heading, onSubmit }) => {
           }
         `}
       />
-
+      <Link to={'/'} css={css`color: var(--text-primary);
+          font-weight: 700;
+          font-size: 30px;
+          display: block;
+          text-decoration: none;
+          text-align:center;
+          `}>🐠 Coral</Link>
       <div
         css={css`
           background-color: white;
@@ -75,9 +82,13 @@ export default ({ heading, onSubmit }) => {
             onChange={e => setPassword(e.target.value)}
             />
 
-          <input type="submit" value="Sign up" />
+          <input type="submit" value={submit} />
         </Form>
       </div>
+      <p css = {css`
+      text-align:center;
+      margin-top:15px
+      `}><Link to={bottom.url}>{bottom.text}</Link></p>
     </>
   )
 }

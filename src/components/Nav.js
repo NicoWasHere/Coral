@@ -38,7 +38,7 @@ export default ({ noSearch=false }) => {
         `}
         className="logo"
       >
-        Coral
+       🐠Coral
       </Link>
 
       {!noSearch ?

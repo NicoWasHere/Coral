@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import { Link } from "gatsby"
 import { css } from "@emotion/core"
 import firebase from "gatsby-plugin-firebase"
 
@@ -7,6 +6,7 @@ import Head from "../components/Head"
 import Form from "../components/Form"
 import Logout from "../components/Logout"
 import Nav from "../components/Nav"
+import NotLoggedIn from "../components/NotLoggedIn"
 
 import useUser from "../hooks/useUser"
 
@@ -54,7 +54,7 @@ export default () => {
   }
   if(!user){
     return(
-      <Link to={'/signin'}>please sign in here</Link>
+    <NotLoggedIn/>
     )
   }
   return (
