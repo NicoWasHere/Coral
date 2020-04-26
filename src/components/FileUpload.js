@@ -19,13 +19,8 @@ export default ({address,doUpload,uploadComplete})=>{
 
     const uploadFile = (file,address) =>{
         const storage = firebase.storage().ref()
-        // let fileRef = null;
-        // do{
         const uuid = generate_UUID()
         let fileRef = storage.child(address+"/"+uuid)
-        // }while((fileRef)=>{fileRef.getDownloadURL().then(res=>{
-        //     return true
-        // }).catch((err)=>{return false})})
         fileRef.put(file).then((snap)=>{
             snap.ref.getDownloadURL().then((url)=>{
                 uploadComplete(url)
