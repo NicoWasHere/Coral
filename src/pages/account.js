@@ -82,18 +82,6 @@ export default () => {
           font-weight: 500;
           vertical-align: middle;
           `}>Mod</p>:""}</h1> 
-        
-        {(user && !user.displayName) && (
-          <p
-            css={css`
-              margin-bottom: 16px;
-              font-weight: 600;
-              font-size: 20px;
-            `}
-          >
-            Please complete your account information:
-          </p>
-        )}
 
         {(user && !user.displayName) && (
           <p
