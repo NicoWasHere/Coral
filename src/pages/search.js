@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
+import { navigate } from "gatsby"
 import { Link } from "gatsby"
 import { css } from "@emotion/core"
 
@@ -11,17 +12,11 @@ import useSearch from "../hooks/useSearch"
 export default ({ location }) => {
   const queryStringQuery = decodeURIComponent(location.search.replace("?q=", ""))
 
-  const [query, setQuery] = useState(queryStringQuery)
-
-  const results = useSearch(query)
+  const results = useSearch(queryStringQuery)
 
   const searchFor = term => {
-    setQuery(term)
+    navigate(`/search?q=${term}`)
   }
-
-  useEffect(() => {
-    searchFor(query)
-  }, [query])
 
   return (
     <>
@@ -30,7 +25,7 @@ export default ({ location }) => {
       <Nav noSearch />
 
       <SearchBar
-        value={query}
+        initialValue={queryStringQuery}
         onSubmit={query => searchFor(query)}
       />
 

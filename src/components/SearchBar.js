@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import { css } from "@emotion/core"
 
-export default ({ onSubmit, value="" }) => {
-  const [query, setQuery] = useState(value)
+export default ({ onSubmit, initialValue="" }) => {
+  const [query, setQuery] = useState(initialValue)
 
   const internalOnSubmit = e => {
     e.preventDefault()
