@@ -35,7 +35,7 @@ export default (searchTerm) => {
     //breaks the search term into small 3 char strings
     const fragmentSearch = (search) =>{
         let fragments = []
-        for(let i = 0; i<search.length-3;i++){
+        for(let i = 0; i<search.length-2;i++){
             fragments.push(search.substring(i,i+3))
         }
         return fragments
