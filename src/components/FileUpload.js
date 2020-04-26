@@ -1,5 +1,5 @@
 import React,{ useState,useEffect } from "react"
-import firebase from "firebase"
+import firebase from "gatsby-plugin-firebase"
 
 // address is the folder where the media should go ("pfp" or "answers") uploadComplete is a function that fires with the upload path
 
