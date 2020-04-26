@@ -12,12 +12,12 @@ Once that is finished we
 - Add a point system. 
     - the way people get points is when there answer is marked helpful
     - Only the single approved answer can be marked helpful leading to competition for better answers 
-- Connect students with tutors (schedule (possibily also earn points))
+- Connect students with tutors (schedule (possibly also earn points))
 
 TODO
 - Image/Video Response (Firebase Storage)
 - Fix Styling @Ben
-- Add data to account page
+- Add post history to account page
 
 - Search Filters
 - Subdomains

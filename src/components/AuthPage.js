@@ -33,7 +33,14 @@ export default ({ heading, submit, bottom, onSubmit }) => {
           display: block;
           text-decoration: none;
           text-align:center;
-          `}>🐠 Coral</Link>
+          margin-bottom: 16px;
+          `}>
+            <span role="img" aria-label="" css={css`
+              font-size: inherit;
+            `}>
+              🐠
+            </span> Coral
+          </Link>
       <div
         css={css`
           background-color: white;

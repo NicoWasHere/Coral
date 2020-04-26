@@ -7,7 +7,7 @@ import Head from "../components/Head"
 export default () =>{
     return(
     <>
-    <Head title="Account Not Found" />
+    <Head title="Not signed in" />
     <Global
         styles={css`
           body {
@@ -24,7 +24,13 @@ export default () =>{
           display: block;
           text-decoration: none;
           text-align:center;
-          `}>🐠 Coral</Link>
+          margin-bottom: 16px;
+
+          span {
+            font-size: inherit;
+          }
+          `}>
+            <span role="img" aria-label="">🐠</span> Coral</Link>
     <div
         css={css`
           background-color: white;
@@ -48,7 +54,7 @@ export default () =>{
             letter-spacing: -.5px;
             margin-bottom: 32px;
           `}
-        >You are not signed into an account</h1>
+        >You are not signed in to Coral</h1>
         <div
         css={css`
           display:flex;

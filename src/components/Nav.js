@@ -35,10 +35,14 @@ export default ({ noSearch=false }) => {
           font-size: 20px;
           display: block;
           text-decoration-color: var(--accent);
+
+          span {
+            font-size: inherit;
+          }
         `}
         className="logo"
       >
-       🐠Coral
+       <span role="img" aria-label="">🐠</span> Coral
       </Link>
 
       {!noSearch ?
