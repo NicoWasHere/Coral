@@ -17,8 +17,8 @@ export default ({ onSubmit, initialValue="" }) => {
       css={css`
         background-color: white;
         box-shadow: var(--box-shadow-mini);
-        border-radius: 8px;
-        overflow: hidden;
+        --border-radius: 8px; /* defines border radius in a variable for use by input and button */
+        border-radius: var(--border-radius);
 
         display: grid;
         grid-template-columns: 1fr max-content;
@@ -32,6 +32,8 @@ export default ({ onSubmit, initialValue="" }) => {
           width: 100%;
           color: var(--text-primary);
           font-weight: 500;
+          border-top-left-radius: var(--border-radius);
+          border-bottom-left-radius: var(--border-radius);
 
           :focus {
             outline: none;
@@ -52,6 +54,8 @@ export default ({ onSubmit, initialValue="" }) => {
           font-weight: 600;
           outline: none;
           cursor: pointer;
+          border-top-right-radius: var(--border-radius);
+          border-bottom-right-radius: var(--border-radius);
         `}
       />
     </form>
