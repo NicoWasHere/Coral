@@ -25,6 +25,9 @@ export default ({ location }) => {
     const [bestAnswer, setBestAnswer] = useState()
     const [bestAnswerAuthor, setBestAnswerAuthor] = useState()
 
+    const [isModerator,setIsModerator] = useState(false)
+    
+
     //gets the question using the id from the path
     useEffect(() => {
         if(!id) return setNotFound(true)
@@ -62,6 +65,7 @@ export default ({ location }) => {
                   .then(res => setBestAnswerAuthor(res.data()))
               })
         })
+
     }, [id])
 
     const [myAnswers, setMyAnswers] = useState([])
@@ -74,6 +78,10 @@ export default ({ location }) => {
 
       const db = firebase.firestore()
      
+      db.collection('moderators').doc(user.uid).get().then(snapshot =>{
+        setIsModerator(snapshot.exists)
+      })
+
       //gets all of the answers that the user has answered for the question
       db.collection("questions").doc(id).collection("answers").where("author", "==", user.uid).get()
         .then(snapshot => {
@@ -89,6 +97,25 @@ export default ({ location }) => {
           setMyAnswers(output)
         })
     }, [user, id])
+
+    const [allAnswers,setAllAnswers] = useState([])
+
+    useEffect(()=>{
+
+      if(isModerator){
+        const db = firebase.firestore()
+        db.collection("questions").doc(id).collection("answers").get()
+        .then(snapshot => {
+          const output = []
+          snapshot.forEach(doc => {
+            output.push({
+              id: doc.id,
+              ...doc.data()
+            })})
+          setAllAnswers(output)
+        })
+      }
+    },[isModerator,id])
 
     const [answer, setAnswer] = useState("")
 
@@ -288,6 +315,100 @@ export default ({ location }) => {
 
               <input type="submit" value="Submit answer" />
             </Form>
+
+            {isModerator?
+            <>
+            <h2
+                  css={css`
+                    font-size: 18px;
+                    font-weight: 600;
+                    color: var(--text-primary);
+                    margin-bottom: 16px;
+                    line-height: 1.4;
+                  `}
+                >
+                  All Answers
+                </h2>
+                <div
+                  css={css`
+                    display: grid;
+                    grid-auto-rows: max-content;
+                    grid-row-gap: 16px;
+                  `}
+                >
+                  {allAnswers.map(answer => (
+                    <div
+                      key={answer.id}
+                      css={css`
+                        border: 1px solid var(--border);
+                        padding: 16px;
+                        border-radius: 8px;
+                      `}
+                    >
+                      <p
+                        css={css`
+                          white-space: pre-wrap;
+                          line-height: 1.5;
+                          max-width: 512px;
+                        `}
+                      >
+                        {answer.body}
+                      </p>
+                      
+                      {answer.image? <img src = {answer.image} alt=""/>:""}
+
+                      <button
+                        css={css`
+                          background-color: var(--text-secondary);
+                          color: white;
+                          padding: 3px 8px;
+                          border-radius: 4px;
+                          margin-top: 16px;
+                          cursor: pointer;
+                          font-size: 14px;
+                          font-weight: 500;
+                        `}
+                        onClick={() => {
+                          if(window.confirm("Are you sure you'd like to delete this answer?")) {
+                            const db = firebase.firestore()
+
+                            db.collection("questions").doc(id).collection("answers").doc(answer.id).delete()
+                              .then(() => window.location.reload())
+                          }
+                        }}
+                      >
+                        Delete this answer
+                      </button>
+                      <button
+                        css={css`
+                          background-color: #d4af37;
+                          color: white;
+                          padding: 3px 8px;
+                          border-radius: 4px;
+                          margin-top: 16px;
+                          cursor: pointer;
+                          font-size: 14px;
+                          font-weight: 500;
+                          margin-left: 16px;
+                        `}
+                        onClick={() => {
+                          if(window.confirm("Are you sure you want to make this the best answer?")) {
+                            const db = firebase.firestore()
+
+                            db.collection("questions").doc(id).update({
+                              bestAnswer:answer.id
+                            })
+                              .then(() => window.location.reload())
+                          }
+                        }}
+                      >
+                        Make best answer
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </>
+            :""}
 
             {myAnswers.length > 0 && (
               <>
