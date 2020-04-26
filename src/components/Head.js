@@ -31,6 +31,8 @@ export default ({ title }) => {
             --background: hsl(208deg, 39%, 97%);
             --background-tinted: hsl(208deg, 50%, 95%);
             --background-tinted-dark: hsl(208deg, 40%, 90%);
+
+            --background-gold: #d4af37;
             
             /* tons of overlapping box shadows so they look buttery smooth */
             --box-shadow:

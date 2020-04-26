@@ -15,6 +15,7 @@ export default () => {
   const [YOG, setYOG] = useState("")
   const [bio, setBio] = useState("")
   const [displayName, setDisplayName] = useState("")
+  const [isModerator,setIsModerator] = useState(false)
 
   const user = useUser()
 
@@ -30,6 +31,10 @@ export default () => {
         setYOG(data?.YOG || "")
         setBio(data?.bio || "")
         setDisplayName(data?.displayName || "")
+      })
+    
+      db.collection('moderators').doc(user.uid).get().then(snapshot =>{
+        setIsModerator(snapshot.exists)
       })
   }, [user])
 
@@ -64,8 +69,20 @@ export default () => {
       <Nav tinted />
       
       <main className="constrain-width">
-        <h1 className="page-heading">Account Settings</h1>
-
+        <h1 className="page-heading">Account
+          {isModerator? 
+          <p css={css`
+          display:inline;
+          margin-left: 10px;
+          color: var(--background);
+          background-color: var(--background-gold);
+          border-radius:5px;
+          padding: 3px 6px;
+          font-size: 16px;
+          font-weight: 500;
+          vertical-align: middle;
+          `}>Mod</p>:""}</h1> 
+        
         {(user && !user.displayName) && (
           <p
             css={css`
