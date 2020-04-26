@@ -30,6 +30,10 @@ export default () =>{
                 grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
                 grid-column-gap: 32px;
                 grid-row-gap: 32px;
+
+                @media (max-width: 400px) {
+                    grid-template-columns: 1fr;
+                }
             `}
         >
             {questions.map(question => 
