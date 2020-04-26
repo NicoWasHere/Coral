@@ -200,7 +200,6 @@ export default ({ location }) => {
             css={css`
               white-space: pre-wrap;
               line-height: 1.5;
-              max-width: 512px;
             `}
           >
               {question.body}
@@ -227,7 +226,6 @@ export default ({ location }) => {
             css={css`
               white-space: pre-wrap;
               line-height: 1.5;
-              max-width: 512px;
             `}
           >
             {bestAnswer?.body ? bestAnswer.body : "No answer yet."}
@@ -353,7 +351,6 @@ export default ({ location }) => {
                         css={css`
                           white-space: pre-wrap;
                           line-height: 1.5;
-                          max-width: 512px;
                         `}
                       >
                         {answer.body}
@@ -449,7 +446,6 @@ export default ({ location }) => {
                         css={css`
                           white-space: pre-wrap;
                           line-height: 1.5;
-                          max-width: 512px;
                         `}
                       >
                         {answer.body}
