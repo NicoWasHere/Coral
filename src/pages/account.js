@@ -76,30 +76,6 @@ export default () => {
           Please complete your account information:
         </p>
       )}
-
-      <Form onSubmit={onSubmit} constrainWidth>
-        <input
-          placeholder="Display name"
-          value={displayName}
-          onChange={e => setDisplayName(e.target.value)}
-          required
-        />
-
-        <textarea
-          placeholder="Bio"
-          value={bio}
-          onChange={e => setBio(e.target.value)}
-        />
-
-        <input
-          placeholder="Year of graduation"
-          type = "number"
-          value={YOG}
-          onChange={e => setYOG(e.target.value)}
-        />
-
-        <input type="submit" value="Save" />
-      </Form>
       
       <main class="constrain-width">
         <h1 className="page-heading">Account Settings</h1>
