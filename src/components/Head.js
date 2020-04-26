@@ -2,6 +2,8 @@ import React from "react"
 import { css, Global } from "@emotion/core"
 import { Helmet } from "react-helmet-async"
 
+import "focus-visible"
+
 //a <head> component that controls the title and icon
 //allows for a custom title variable as well
 export default ({ title }) => {
@@ -84,7 +86,7 @@ export default ({ title }) => {
             margin-bottom: 24px;
           }
           
-          :focus {
+          .focus-visible, input[type="submit"].focus-visible {
             outline: 1px dotted var(--accent);
             outline-offset: 2px;
           }
