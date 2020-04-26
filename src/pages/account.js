@@ -63,7 +63,7 @@ export default () => {
 
       <Nav tinted />
       
-      <main class="constrain-width">
+      <main className="constrain-width">
         <h1 className="page-heading">Account Settings</h1>
 
         {(user && !user.displayName) && (
