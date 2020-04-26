@@ -82,6 +82,11 @@ export default ({ title }) => {
             color: var(--text-primary);
             margin-bottom: 24px;
           }
+          
+          :focus {
+            outline: 1px dotted var(--accent);
+            outline-offset: 2px;
+          }
         `}
       />
     </>
