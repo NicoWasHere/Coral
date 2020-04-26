@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { Link } from "gatsby"
 import { css } from "@emotion/core"
 import firebase from 'gatsby-plugin-firebase'
 
@@ -25,6 +26,8 @@ export default ({ location }) => {
 
     //gets the question using the id from the path
     useEffect(() => {
+        if(!id) return setNotFound(true)
+      
         const db = firebase.firestore()
         db.collection('questions').doc(id).get().then(res=>{
             //if the pat is invalid it catches it 
@@ -63,6 +66,8 @@ export default ({ location }) => {
     useEffect(() => {
       // this request does not work without user being loaded
       if(!user) return 
+
+      if(!id) return setNotFound(true)
 
       const db = firebase.firestore()
      
@@ -181,21 +186,38 @@ export default ({ location }) => {
         `}
       />
 
+      <h2
+        css={css`
+          font-size: 18px;
+          font-weight: 600;
+          color: var(--text-primary);
+          margin-bottom: 4px;
+          line-height: 1.4;
+        `}
+      >
+        Answer this question
+      </h2>
+
+      {!user && (
+        <p
+          css={css`
+            line-height: 1.4;
+            font-weight: 500;
+
+            a {
+              color: var(--accent);
+              text-decoration: none;
+              font-weight: 500;
+            }
+          `}
+        >
+          <Link to="/signup/">Create an account</Link> or <Link to="/signin/">sign in</Link> to Coral in order to contribute an answer.
+        </p>
+      )}
+
       {/* show add answer form only if user is logged in */}
       {user && (
         <>
-          <h2
-            css={css`
-              font-size: 18px;
-              font-weight: 600;
-              color: var(--text-primary);
-              margin-bottom: 4px;
-              line-height: 1.4;
-            `}
-          >
-            Answer this question
-          </h2>
-
           <p>
             If your answer is picked, it will be shown as this question's answer. Only one answer will be picked. 
           </p>
