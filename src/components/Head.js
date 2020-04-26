@@ -71,6 +71,7 @@ export default ({ title }) => {
 
           body {
             padding: var(--body-padding);
+            padding-bottom: calc(3 * var(--body-padding));
             background-color: var(--background);
           }
 
