@@ -45,7 +45,11 @@ export default ({address,doUpload,uploadComplete})=>{
 
     return(
         <div>
-            <input type = 'file' accept="image/*" onChange={(e)=>updateFile(e.target.files[0])}></input>
+            <input
+                type = 'file'
+                accept="image/*"
+                onChange={(e)=>updateFile(e.target.files[0])}
+            />
         </div>
     )
 }
