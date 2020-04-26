@@ -153,7 +153,7 @@ export default ({ location }) => {
               letter-spacing: -0.3px;
               line-height: 1.3;
               color: var(--text-primary);
-              margin-bottom: 4px;
+              margin-bottom: 8px;
             `}
           >
               {question.title}
