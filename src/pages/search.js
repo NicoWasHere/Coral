@@ -22,64 +22,66 @@ export default ({ location }) => {
     <>
       <Head title="Search" />
 
-      <Nav noSearch />
+      <Nav noSearch tinted />
 
-      <SearchBar
-        initialValue={queryStringQuery}
-        onSubmit={query => searchFor(query)}
-      />
+      <main className="constrain-width">
+        <SearchBar
+          initialValue={queryStringQuery}
+          onSubmit={query => searchFor(query)}
+        />
 
-      {/* spacer between search bar and results list */}
-      <div
-        css={css`
-          margin-bottom: 24px;
-        `}
-      />
+        {/* spacer between search bar and results list */}
+        <div
+          css={css`
+            margin-bottom: 24px;
+          `}
+        />
 
-      <div
-        css={css`
-          display: grid;
-          grid-auto-rows: max-content;
-          grid-row-gap: 16px;
-        `}
-      >
-        {results.length === 0 && (
-          <p
-            css={css`
-              font-weight: 500;
-            `}
-          >
-            No results found.
-          </p>
-        )}
-
-        {results.map(result => (
-          <Link
-            to={`/question/${result.id}`}
-            key={result.id}
-            css={css`
-              text-decoration: none;
-            `}
-          >
-            <div
+        <div
+          css={css`
+            display: grid;
+            grid-auto-rows: max-content;
+            grid-row-gap: 16px;
+          `}
+        >
+          {results.length === 0 && (
+            <p
               css={css`
-                padding: 16px;
-                background-color: white;
-                border-radius: 8px;
+                font-weight: 500;
               `}
             >
-              <p
+              No results found.
+            </p>
+          )}
+
+          {results.map(result => (
+            <Link
+              to={`/question/${result.id}`}
+              key={result.id}
+              css={css`
+                text-decoration: none;
+              `}
+            >
+              <div
                 css={css`
-                  font-weight: 500;
-                  color: var(--text-primary);
+                  padding: 16px;
+                  background-color: white;
+                  border-radius: 8px;
                 `}
               >
-                {result.title}
-              </p>
-            </div>
-          </Link>
-        ))}
-      </div>
+                <p
+                  css={css`
+                    font-weight: 500;
+                    color: var(--text-primary);
+                  `}
+                >
+                  {result.title}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </main>
     </>
   )
 }
