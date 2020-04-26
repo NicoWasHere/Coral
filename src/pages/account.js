@@ -7,6 +7,7 @@ import Form from "../components/Form"
 import Logout from "../components/Logout"
 import Nav from "../components/Nav"
 import NotLoggedIn from "../components/NotLoggedIn"
+import FileUpload from "../components/FileUpload"
 
 import useUser from "../hooks/useUser"
 
@@ -64,7 +65,7 @@ export default () => {
       <Nav />
 
       <h1 className="page-heading">Account Settings</h1>
-
+      
       {(user && !user.displayName) && (
         <p
           css={css`
