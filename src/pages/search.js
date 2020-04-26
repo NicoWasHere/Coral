@@ -21,7 +21,7 @@ export default ({ location }) => {
 
   useEffect(() => {
     searchFor(query)
-  }, [])
+  }, [query])
 
   return (
     <>
