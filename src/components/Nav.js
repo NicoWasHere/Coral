@@ -19,10 +19,36 @@ export default ({ noSearch=false, constrainWidth=false, tinted=false }) => {
         align-items: center;
         margin-bottom: 32px;
 
+        @media (max-width: 800px) {
+          display: block;
+
+          .desktop {
+            display: none;
+          }
+
+          .mobile {
+            display: inline;
+          }
+
+          .logo {
+            margin-bottom: 8px;
+          }
+
+          a:not(.logo) {
+            display: inline-block;
+            margin-right: 16px;
+            margin-bottom: 4px;
+          }
+        }
+
+        .mobile {
+          display: none;
+        }
+
         a:not(.logo) {
           color: var(--accent);
           font-weight: 500;
-          display: block;
+          text-decoration: none;
         }
         
         /* tinted = darker background color */
@@ -65,12 +91,14 @@ export default ({ noSearch=false, constrainWidth=false, tinted=false }) => {
       {!noSearch ?
         <SearchBar
           onSubmit={query => navigate(`/search?q=${encodeURIComponent(query)}`)}
+          className="desktop"
         />
       : <div />}
 
       {user && (
         <>
-          <div /> {/* for spacing between search bar and links */}
+          <div className="desktop" /> {/* for spacing between search bar and links */}
+          <Link to="/search" className="mobile">Search</Link>
           <Link to="/new-question">New Question</Link>
           <Link to="/account">My Account</Link>
         </>

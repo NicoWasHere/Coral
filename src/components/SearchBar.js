@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { css } from "@emotion/core"
 
-export default ({ onSubmit, initialValue="" }) => {
+export default ({ onSubmit, className, initialValue="" }) => {
   const [query, setQuery] = useState(initialValue)
 
   const internalOnSubmit = e => {
@@ -25,6 +25,7 @@ export default ({ onSubmit, initialValue="" }) => {
         grid-column-gap: 16px;
       `}
       onSubmit={internalOnSubmit}
+      className={className}
     >
       <input
         css={css`
