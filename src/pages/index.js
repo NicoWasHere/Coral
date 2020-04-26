@@ -16,7 +16,7 @@ export default () => {
     <>
       <Head title="Home" />
 
-      <Nav />
+      <Nav tinted />
 
       {user ? (
         <div

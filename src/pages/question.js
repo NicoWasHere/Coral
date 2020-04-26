@@ -128,140 +128,115 @@ export default ({ location }) => {
     <>
       <Head title={question.title} />
 
-      <Nav />
-      <div
-        css={css`
-          margin-bottom: 48px;
-        `}
-      >
-        <h1
-          css={css`
-            font-size: 32px;
-            font-weight: 700;
-            letter-spacing: -0.3px;
-            line-height: 1.3;
-            color: var(--text-primary);
-            margin-bottom: 4px;
-          `}
-        >
-            {question.title}
-        </h1>
-
-        <p
-          css={css`
-            font-weight: 600;
-            margin-bottom: 16px;
-          `}
-        >
-            Asked by {author}
-        </p>
-        {question.image?<img src = {question.image}/>:""}
+      <Nav tinted />
+      
+      <main className="constrain-width">
         <div
           css={css`
-            white-space: pre-wrap;
-            line-height: 1.5;
-            max-width: 512px;
+            margin-bottom: 48px;
           `}
         >
-            {question.body}
-        </div>
-      </div>
-
-      <h2
-        css={css`
-          font-size: 18px;
-          font-weight: 600;
-          color: var(--text-primary);
-          margin-bottom: 4px;
-          line-height: 1.4;
-        `}
-      >
-        Answer{bestAnswerAuthor ? `ed by ${bestAnswerAuthor.displayName}` : ""}
-        {/* ^ that's galaxy brain right there */}
-      </h2>
-      
-      <div>
-        <p
-          css={css`
-            white-space: pre-wrap;
-            line-height: 1.5;
-            max-width: 512px;
-          `}
-        >
-          {bestAnswer?.body ? bestAnswer.body : "No answer yet."}
-          {bestAnswer?.image ? <img src = {bestAnswer.image}/>:""}
-        </p>
-      </div>
-
-      {/* spacer div */}
-      <div
-        css={css`
-          margin-bottom: 48px;
-        `}
-      />
-
-      <h2
-        css={css`
-          font-size: 18px;
-          font-weight: 600;
-          color: var(--text-primary);
-          margin-bottom: 4px;
-          line-height: 1.4;
-        `}
-      >
-        Answer this question
-      </h2>
-
-      {!user && (
-        <p
-          css={css`
-            line-height: 1.4;
-            font-weight: 500;
-
-            a {
-              color: var(--accent);
-              text-decoration: none;
-              font-weight: 500;
-            }
-          `}
-        >
-          <Link to="/signup/">Create an account</Link> or <Link to="/signin/">sign in</Link> to Coral in order to contribute an answer.
-        </p>
-      )}
-
-      {/* show add answer form only if user is logged in */}
-      {user && (
-        <>
-          <p>
-            If your answer is picked, it will be shown as this question's answer. Only one answer will be picked. 
-          </p>
-
-          <div
+          <h1
             css={css`
+              font-size: 32px;
+              font-weight: 700;
+              letter-spacing: -0.3px;
+              line-height: 1.3;
+              color: var(--text-primary);
+              margin-bottom: 4px;
+            `}
+          >
+              {question.title}
+          </h1>
+
+          <p
+            css={css`
+              font-weight: 600;
               margin-bottom: 16px;
             `}
-          />
-
-          <Form
-            onSubmit={submitAnswer}
-            smallSubmit
+          >
+              Asked by {author}
+          </p>
+          {question.image?<img src = {question.image}/>:""}
+          <div
             css={css`
-              /* move save button closer to textarea */
-              textarea {
-                margin-bottom: 0;
-              }
+              white-space: pre-wrap;
+              line-height: 1.5;
+              max-width: 512px;
+            `}
+          >
+              {question.body}
+          </div>
+        </div>
 
-              input[type="submit"] {
-                margin-top: 8px;
+        <h2
+          css={css`
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            line-height: 1.4;
+          `}
+        >
+          Answer{bestAnswerAuthor ? `ed by ${bestAnswerAuthor.displayName}` : ""}
+          {/* ^ that's galaxy brain right there */}
+        </h2>
+        
+        <div>
+          <p
+            css={css`
+              white-space: pre-wrap;
+              line-height: 1.5;
+              max-width: 512px;
+            `}
+          >
+            {bestAnswer?.body ? bestAnswer.body : "No answer yet."}
+            {bestAnswer?.image ? <img src = {bestAnswer.image}/>:""}
+          </p>
+        </div>
+
+        {/* spacer div */}
+        <div
+          css={css`
+            margin-bottom: 48px;
+          `}
+        />
+
+        <h2
+          css={css`
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            line-height: 1.4;
+          `}
+        >
+          Answer this question
+        </h2>
+
+        {!user && (
+          <p
+            css={css`
+              line-height: 1.4;
+              font-weight: 500;
+
+              a {
+                color: var(--accent);
+                text-decoration: none;
+                font-weight: 500;
               }
             `}
           >
-            <textarea
-              value={answer}
-              onChange={e => setAnswer(e.target.value)}
-              placeholder="Write your answer..."
-              required
-            />
+            <Link to="/signup/">Create an account</Link> or <Link to="/signin/">sign in</Link> to Coral in order to contribute an answer.
+          </p>
+        )}
+
+        {/* show add answer form only if user is logged in */}
+        {user && (
+          <>
+            <p>
+              If your answer is picked, it will be shown as this question's answer. Only one answer will be picked. 
+            </p>
 
             <div
               css={css`
@@ -269,81 +244,109 @@ export default ({ location }) => {
               `}
             />
 
-            <FileUpload address="question" doUpload={shouldUpload} uploadComplete={uploadAnswer}  />
+            <Form
+              onSubmit={submitAnswer}
+              smallSubmit
+              css={css`
+                /* move save button closer to textarea */
+                textarea {
+                  margin-bottom: 0;
+                }
 
-            <input type="submit" value="Submit answer" />
-          </Form>
-
-          {myAnswers.length > 0 && (
-            <>
-              <h2
-                css={css`
-                  font-size: 18px;
-                  font-weight: 600;
-                  color: var(--text-primary);
-                  margin-bottom: 16px;
-                  line-height: 1.4;
-                `}
-              >
-                Your past answers: 
-              </h2>
+                input[type="submit"] {
+                  margin-top: 8px;
+                }
+              `}
+            >
+              <textarea
+                value={answer}
+                onChange={e => setAnswer(e.target.value)}
+                placeholder="Write your answer..."
+                required
+              />
 
               <div
                 css={css`
-                  display: grid;
-                  grid-auto-rows: max-content;
-                  grid-row-gap: 16px;
+                  margin-bottom: 16px;
                 `}
-              >
-                {myAnswers.map(answer => (
-                  <div
-                    key={answer.id}
-                    css={css`
-                      border: 1px solid var(--border);
-                      padding: 16px;
-                      border-radius: 8px;
-                    `}
-                  >
-                    <p
+              />
+
+              <FileUpload address="question" doUpload={shouldUpload} uploadComplete={uploadAnswer}  />
+
+              <input type="submit" value="Submit answer" />
+            </Form>
+
+            {myAnswers.length > 0 && (
+              <>
+                <h2
+                  css={css`
+                    font-size: 18px;
+                    font-weight: 600;
+                    color: var(--text-primary);
+                    margin-bottom: 16px;
+                    line-height: 1.4;
+                  `}
+                >
+                  Your past answers: 
+                </h2>
+
+                <div
+                  css={css`
+                    display: grid;
+                    grid-auto-rows: max-content;
+                    grid-row-gap: 16px;
+                  `}
+                >
+                  {myAnswers.map(answer => (
+                    <div
+                      key={answer.id}
                       css={css`
-                        white-space: pre-wrap;
-                        line-height: 1.5;
-                        max-width: 512px;
+                        border: 1px solid var(--border);
+                        padding: 16px;
+                        border-radius: 8px;
                       `}
                     >
-                      {answer.body}
-                      {answer.image? <img src = {answer.image}/>:""}
-                    </p>
+                      <p
+                        css={css`
+                          white-space: pre-wrap;
+                          line-height: 1.5;
+                          max-width: 512px;
+                        `}
+                      >
+                        {answer.body}
+                        {answer.image? <img src = {answer.image}/>:""}
+                      </p>
 
-                    <button
-                      css={css`
-                        background-color: var(--text-secondary);
-                        color: white;
-                        padding: 3px 8px;
-                        border-radius: 4px;
-                        margin-top: 16px;
-                        cursor: pointer;
-                        font-size: 14px;
-                        font-weight: 500;
-                      `}
-                      onClick={() => {
-                        if(window.confirm("Are you sure you'd like to delete this answer?")) {
-                          const db = firebase.firestore()
+                      <button
+                        css={css`
+                          background-color: var(--text-secondary);
+                          color: white;
+                          padding: 3px 8px;
+                          border-radius: 4px;
+                          margin-top: 16px;
+                          cursor: pointer;
+                          font-size: 14px;
+                          font-weight: 500;
+                        `}
+                        onClick={() => {
+                          if(window.confirm("Are you sure you'd like to delete this answer?")) {
+                            const db = firebase.firestore()
 
-                          db.collection("questions").doc(id).collection("answers").doc(answer.id).delete()
-                            .then(() => window.location.reload())
-                        }
-                      }}
-                    >
-                      Delete this answer
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </>
-          )}
-        </>
-      )}
+                            db.collection("questions").doc(id).collection("answers").doc(answer.id).delete()
+                              .then(() => window.location.reload())
+                          }
+                        }}
+                      >
+                        Delete this answer
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+          </>
+        )}
+      </main>
     </>
   )
 }

@@ -61,24 +61,22 @@ export default () => {
     <>
       <Head title="Account" />
 
-      <Nav />
-
-      <h1 className="page-heading">Account Settings</h1>
-      
-      {(user && !user.displayName) && (
-        <p
-          css={css`
-            margin-bottom: 16px;
-            font-weight: 600;
-            font-size: 20px;
-          `}
-        >
-          Please complete your account information:
-        </p>
-      )}
+      <Nav tinted />
       
       <main class="constrain-width">
         <h1 className="page-heading">Account Settings</h1>
+
+        {(user && !user.displayName) && (
+          <p
+            css={css`
+              margin-bottom: 16px;
+              font-weight: 600;
+              font-size: 20px;
+            `}
+          >
+            Please complete your account information:
+          </p>
+        )}
 
         {(user && !user.displayName) && (
           <p
