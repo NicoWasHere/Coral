@@ -12,6 +12,7 @@
     "gatsby-plugin-netlify": "^2.2.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-helmet-async": "^1.0.5"
+    "react-helmet-async": "^1.0.5",
+    "sitemap": "^6.1.2"
   }
 }
