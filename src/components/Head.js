@@ -92,6 +92,10 @@ export default ({ title }) => {
             outline-offset: 2px;
           }
 
+          :focus:not(.focus-visible) {
+            outline: none;
+          }
+
           .constrain-width {
             max-width: 768px;
             margin: 0 auto;

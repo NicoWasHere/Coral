@@ -419,6 +419,7 @@ export default ({ location }) => {
                     color: var(--text-primary);
                     margin-bottom: 16px;
                     line-height: 1.4;
+                    margin-top: 32px;
                   `}
                 >
                   Your past answers: 
