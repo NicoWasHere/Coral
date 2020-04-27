@@ -15,10 +15,7 @@ Once that is finished we
 - Connect students with tutors (schedule (possibly also earn points))
 
 TODO
-- Image/Video Response (Firebase Storage)
-- Fix Styling @Ben
 - Add post history to account page
 
 - Search Filters
 - Subdomains
-- Admin Accounts
